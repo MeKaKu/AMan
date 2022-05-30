@@ -28,6 +28,7 @@ namespace Assets.Scripts.MsgFramework
                 managers.Add(AreaCode.NETWORK, new ManagerBase());
                 managers.Add(AreaCode.AUDIO, new ManagerBase());
                 managers.Add(AreaCode.ITEM, new ManagerBase());
+                managers.Add(AreaCode.EFFECT, new ManagerBase());
 
                 #endregion
             }

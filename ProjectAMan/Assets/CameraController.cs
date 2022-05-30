@@ -17,7 +17,7 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         postion = Camera.main.ScreenToWorldPoint(Input.mousePosition) + playerTransform.position;
-        this.transform.position = new Vector3(Mathf.Lerp(this.transform.position.x, postion.x / 2, 0.01f), Mathf.Lerp(this.transform.position.y, postion.y / 2, 0.01f), -10);
+        this.transform.position = new Vector3(Mathf.Lerp(this.transform.position.x, postion.x / 2, 0.03f), Mathf.Lerp(this.transform.position.y, postion.y / 4, 0.03f), -10);
 
     }
 }

@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.AM.UI;
+using Assets.Scripts.MsgFramework;
 using Assets.Scripts.MsgFramework.Item;
 using UnityEngine;
 
@@ -72,8 +74,10 @@ namespace Assets.Scripts.AM.Item
 
             Destroy(gameObject);
         }
+        public float addHp = 1.0f;
         private void OnCollisionEnter2D(Collision2D other) {
             if(other.gameObject.layer == LayerMask.NameToLayer("Player")){
+                Dispatch(AreaCode.UI, UIEventCode.ADD_PLAYER_HP, addHp);
                 Destroy(gameObject);
             }
         }

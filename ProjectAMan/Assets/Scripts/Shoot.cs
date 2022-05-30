@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.AM.Effect;
+using Assets.Scripts.MsgFramework;
+using Assets.Scripts.MsgFramework.Character;
 using UnityEngine;
 
-public class Shoot : MonoBehaviour
+public class Shoot : CharacterBase
 {
     public GameObject bullet;
     public Transform firePoint;
@@ -53,8 +56,11 @@ public class Shoot : MonoBehaviour
             Fire();
             time = 0;
             bulletCap --;
+            effectMsg.SetMsg(2, firePoint.position, (firePoint.parent.transform.localScale.x > 0 ? 0 : 180)*Vector3.up);
+            Dispatch(AreaCode.EFFECT, 0, effectMsg);
         }
     }
+    EffectMsg effectMsg = new EffectMsg();
     private void Fire()
     {
         Vector3 obj = Camera.main.WorldToScreenPoint(firePoint.transform.position);

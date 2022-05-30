@@ -31,5 +31,6 @@ namespace Assets.Scripts.MsgFramework
         public const int AUDIO = 4;
 
         public const int ITEM = 5;
+        public const int EFFECT = 6;
     }
 }

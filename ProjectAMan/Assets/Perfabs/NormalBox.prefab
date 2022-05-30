@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8828595014900709299}
   - component: {fileID: 8828595014900709297}
   - component: {fileID: 8828595014900709303}
-  - component: {fileID: 8828595014900709302}
+  - component: {fileID: 199731591991962142}
   m_Layer: 6
   m_Name: NormalBox
   m_TagString: Box
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b85c9a110741fdf4db7a4d60a228968a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bb1b2d43989335842b1f2e47c1c970cb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -94,14 +94,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 8828595014900709298}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a734c7d8b3a86347b705c750befdb82, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ef3a82858ca3f743ba82cc2367b1e1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  brokenBox: {fileID: 21300000, guid: f4ecfdb513d75604fbd066014ba222dd, type: 3}
   boxMode: 1
   DropMode: 1
   hitCount: 0
-  boxHp: 1
-  itme1: {fileID: 4159274534157771736, guid: 9444940a409d4094c8479125cea82158, type: 3}
+  boxHp: 2
+  itme1: {fileID: 7327113990771863813, guid: 72f55e521abc2194cb649414accf616d, type: 3}
+  parts:
+  - {fileID: 1974052795993255362, guid: 77963e552273b4f4293ea8f587ea9f78, type: 3}
+  - {fileID: 3733544446441512312, guid: 6f1786bddf86c904387211b0ab9e5670, type: 3}
+  - {fileID: 9002017861117052997, guid: 5cd77f06b4d8ed64f8f183567a064406, type: 3}
+  - {fileID: 485913191707491405, guid: 1546827b078d46541a6c02048b195003, type: 3}
+  - {fileID: 479882832706554522, guid: 740e5d935b24f6342b839fb066e2f137, type: 3}
 --- !u!50 &8828595014900709303
 Rigidbody2D:
   serializedVersion: 4
@@ -114,7 +121,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 50
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -123,7 +130,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &8828595014900709302
+--- !u!61 &199731591991962142
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,16 +143,16 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 1.84375}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 3.40625, y: 3.6875}
     newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3.40625, y: 3.6875}
   m_EdgeRadius: 0

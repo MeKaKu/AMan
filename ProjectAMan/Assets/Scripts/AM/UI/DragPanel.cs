@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.AM.UI
 {
@@ -22,26 +23,38 @@ namespace Assets.Scripts.AM.UI
         #endregion
         
         #region 子物体
+        public List<Sprite> sprites;
+        Image img;
         Image Img_Drag;
+        Image Img_Pull;
+        Transform trans;
+        Image Img_Dg;
         List<float> flagHeights = new List<float>(){1f/3,2f/3,1f};
         private void Start() {//初始化
+            img = GetComponent<Image>();
             Img_Drag = transform.Find("Img_OutLine/Img_Drag").GetComponent<Image>();
             Img_Drag.transform.localScale = Vector3.right;
+            trans = transform.Find("Img_OutLine/Img_Drag/Point");
+            Img_Pull = transform.Find("Img_OutLine/Img_Pull").GetComponent<Image>();
+            Img_Dg = transform.Find("Img_OutLine/Img_Dg").GetComponent<Image>();
 
-            Img_Drag.color = Color.green;
+            //Img_Drag.color = Color.green;
         }
         #endregion
         
         #region 方法
-        //float des = .02f;
+        float des = .006f;
         float inc = .006f;
         int flagInd;
         bool isEnter;
         bool isDes;
         private void Update() {
             if(flagInd >= flagHeights.Count){
-                if(!isEnter)
-                    Hide();
+                if(!isEnter){
+                    //加载下一个场景
+                    SceneManager.LoadScene(3);
+                    //Hide();
+                }
                 return;
             }
             if(isEnter && !isDes){
@@ -51,7 +64,8 @@ namespace Assets.Scripts.AM.UI
                 else{
                     flagInd ++;
                     isDes = true;
-                    Img_Drag.color = Color.red;
+                    //Img_Drag.color = Color.red;
+                    img.sprite = sprites[flagInd];
                 }
             }
             else{
@@ -60,10 +74,15 @@ namespace Assets.Scripts.AM.UI
                 }
                 else if(!isEnter){
                     Img_Drag.transform.localScale = Vector3.right;
-                    Img_Drag.color = Color.green;
+                    //Img_Drag.color = Color.green;
                     isDes = false;
+                    inc = des * (flagInd + 1);
                 }
             }
+        }
+        private void LateUpdate() {
+            Img_Dg.transform.localScale = new Vector3(1, 1-Img_Drag.transform.localScale.y, 1);
+            Img_Pull.transform.position = trans.position;
         }
         public void OnPointerDown(PointerEventData eventData) {
             isEnter = true;

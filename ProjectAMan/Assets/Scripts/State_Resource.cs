@@ -7,8 +7,8 @@ public class State_Resource : MonoBehaviour
 {
 
     public int Item1;
-    public Text text;
-    public RawImage RedHp;
+    //public Text text;
+    //public RawImage RedHp;
     public float initialWidth;
 
     public float Hp;//血量
@@ -20,7 +20,7 @@ public class State_Resource : MonoBehaviour
     void Start()
     {
         MaxHp = Hp;
-        initialWidth = RedHp.rectTransform.sizeDelta.x;
+        //initialWidth = RedHp.rectTransform.sizeDelta.x;
         Item1 = 0;
     }
 
@@ -28,13 +28,11 @@ public class State_Resource : MonoBehaviour
     void Update()
     {
         Hp -= Time.deltaTime * DamageSpeed;
-        text.text = Item1.ToString();
+        //text.text = Item1.ToString();
         if (Hp > 0)
         {
-            RedHp.rectTransform.sizeDelta = new Vector2((Hp / MaxHp) * initialWidth, RedHp.rectTransform.sizeDelta.y);
+            //RedHp.rectTransform.sizeDelta = new Vector2((Hp / MaxHp) * initialWidth, RedHp.rectTransform.sizeDelta.y);
         }
-
-
     }
     public void ExploreHit()
     {

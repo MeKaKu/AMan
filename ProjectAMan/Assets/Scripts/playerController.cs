@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.AM.Effect;
+using Assets.Scripts.MsgFramework;
+using Assets.Scripts.MsgFramework.Character;
 using UnityEngine;
 
-public class playerController : MonoBehaviour
+public class playerController : CharacterBase
 {
     public Rigidbody2D rb;
     private Collider2D coll;
@@ -57,11 +60,11 @@ public class playerController : MonoBehaviour
         Vector2 direction = Input.mousePosition - obj;
         if (direction.x > 0)
         {
-            transform.localScale = new Vector3(1, 1, 1);
+            transform.localScale = new Vector3(0.5f, .5f, 1);
         }
         else
         {
-            transform.localScale = new Vector3(-1, 1, 1);
+            transform.localScale = new Vector3(-0.5f, .5f, 1);
         }
 
 
@@ -108,6 +111,9 @@ public class playerController : MonoBehaviour
             rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
             jumpCount--;
             jumpPressed = false;
+
+            effectMsg.SetMsg(0, transform.position, (transform.localScale.x > 0 ? 0 : 180)*Vector3.up);
+            Dispatch(AreaCode.EFFECT, 0, effectMsg);
         }
         else if (jumpPressed && jumpCount > 0 && isJump)
         {
@@ -116,5 +122,5 @@ public class playerController : MonoBehaviour
             jumpPressed = false;
         }
     }
-
+    EffectMsg effectMsg = new EffectMsg();
 }

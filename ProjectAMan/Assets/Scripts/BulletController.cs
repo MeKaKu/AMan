@@ -1,8 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.AM.Effect;
+using Assets.Scripts.AM.UI;
+using Assets.Scripts.MsgFramework;
+using Assets.Scripts.MsgFramework.Item;
 using UnityEngine;
 
-public class BulletController : MonoBehaviour
+public class BulletController : ItemBase
 {
     public float force;
     private Rigidbody2D rb;
@@ -20,6 +24,7 @@ public class BulletController : MonoBehaviour
         GameObject.Find("MainCamera").GetComponent<CameraShake>().SetSmallShakeAmount();
         if (coll.gameObject.tag == "Ground")
         {
+            Dispatch(AreaCode.EFFECT, 0, new EffectMsg(1, transform.position, transform.eulerAngles));
             Destroy(this.gameObject);
         }
         if (coll.gameObject.tag == "Enemy")
@@ -39,6 +44,9 @@ public class BulletController : MonoBehaviour
             Destroy(coll.transform.parent.gameObject, 5);
             Destroy(coll.gameObject);
         }
-
+        if(coll.gameObject.tag == "Player"){
+            //TODO 玩家被击中 减百分之10
+            Dispatch(AreaCode.UI, UIEventCode.ADD_PLAYER_HP, -.1f);
+        }
     }
 }
